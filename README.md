@@ -42,7 +42,7 @@ Note: Network requests go to the configured `API_URL` in the JS. Ensure that end
 - Main files:
   - `index.html` — UI and inlined JS
   - `styles.css` — styling for the result card and form
-  - `app.js` — combined JS (also present in `backup_js/` as references)
+  - `app.js` — combined JS
 - Adjust the API endpoint by editing `API_URL` at the top of the JS.
 - If you see CORS or `file://` errors, serve the site over HTTP and check the remote API CORS policy.
 
@@ -52,7 +52,7 @@ Note: Network requests go to the configured `API_URL` in the JS. Ensure that end
 
 - "Page opened via file://" — open via HTTP server (see Quick start).
 - "Server returned ..." — the API returned an error; check network console and the API URL.
-- DOB validation errors — ensure DOB is in one of the accepted formats and not a future date.
+- DOB validation errors — ensure DOB is in `YYYY-MM-DD` format and not a future date.
 
 ---
 
@@ -64,11 +64,6 @@ DIT_result/
   ├─ styles.css
   ├─ app.js
   ├─ README.md
-  └─ backup_js/
-      ├─ app.js
-      ├─ debug_app.js
-      ├─ main.js
-      └─ script.js
 ```
 
 ---
