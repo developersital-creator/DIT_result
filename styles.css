@@ -1,0 +1,487 @@
+:root {
+  --primary: #0b5ed7;
+  --accent: #ff7a59;
+  --success: #2e7d32;
+  --danger: #d32f2f;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --glass: rgba(11, 94, 215, 0.06);
+  --shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+  --muted-bg: #f7f9fb;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #f5f8fb 0%, #eef4fb 100%);
+  padding: 28px;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  background: transparent;
+}
+
+.header img {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: var(--shadow)
+}
+
+.brand-text .title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--danger);
+  margin: 0 0 4px 0; /* reduce gap below title */
+}
+
+.brand-text h2 {
+  font-size: 18px;
+  margin: 0 0 4px 0; /* reduce gap below department */
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.brand-text h3 {
+  font-size: 14px;
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.brand-text .subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px
+}
+
+.form-container {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+input,
+select,
+button {
+  padding: 10px 14px;
+  margin: 6px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: 0.18s;
+  background: white;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(11, 94, 215, 0.08);
+}
+
+button.primary {
+  background: linear-gradient(90deg, var(--primary), #0a4fb0);
+  color: #fff;
+  border: none;
+  font-weight: 600
+}
+
+button.neutral {
+  background: transparent;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: 600
+}
+
+/* Result card */
+#output {
+  width: 94%;
+  margin: 8px auto;
+}
+
+.result-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #eef2f7;
+  padding-bottom: 12px
+}
+
+.college-left {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
+/* Result card logo size increased to better match header */
+.result-header .college-left img {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.college-left .college-name {
+  font-weight: 700;
+  color: var(--danger);
+  font-size: 22px; /* increased for gradesheet */
+}
+
+.college-left .dept {
+  font-size: 15px; /* slightly larger for visibility */
+  color: var(--muted)
+}
+
+.result-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px
+}
+
+.result-badge {
+  font-weight: 700;
+  padding: 8px 14px; /* match .status */
+  border-radius: 999px;
+  color: #fff;
+  font-size: 15px; /* match .status */
+  min-height: 36px;
+  min-width: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.result-badge.pass {
+  background: var(--success)
+}
+
+.result-badge.fail {
+  background: #000
+}
+
+.student-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+  color: #000;
+  font-weight: 700;
+}
+
+.student-info div {
+  font-size: 13px;
+  color: #000;
+  font-weight: 700;
+}
+
+.student-info b {
+  color: #000;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.table-wrap {
+  overflow: auto;
+  margin-top: 8px
+}
+
+table.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px
+}
+
+table.result-table thead th {
+  background: var(--muted-bg);
+  padding: 12px 14px;
+  text-align: left;
+  color: #111827;
+  font-weight: 700;
+  border-bottom: 1px solid #e6eef7
+}
+
+table.result-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #111827
+}
+
+table.result-table tbody tr:nth-child(even) {
+  background: #fbfdff
+}
+
+td.subject {
+  width: 40%;
+  font-weight: 600;
+  color: #0f1724
+}
+
+td.center {
+  text-align: center
+}
+
+.summary-row th {
+  background: transparent;
+  border-top: 2px solid #e6eef7
+}
+
+.signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px
+}
+
+.signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%
+}
+
+.sig-line {
+  width: 70%;
+  border-bottom: 1px solid #9aa2b3;
+  height: 10px;
+  margin-bottom: 6px
+}
+
+.sig-title {
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 12px
+}
+
+.btn-print {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-weight: 700
+}
+
+/* Status pills keep compatibility */
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px; /* larger clickable area */
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px; /* slightly larger for readability */
+  min-height: 36px;
+  min-width: 100px; /* make widths uniform */
+  box-sizing: border-box;
+}
+
+/* Ensure icons inside status pills match text size */
+.status i {
+  font-size: 15px;
+  line-height: 1;
+} 
+
+.status.pass {
+  background: var(--success)
+}
+
+.status.fail {
+  background: #000
+}
+
+/* Summary-row status colors: make overall totals clearly green/red */
+.summary-row .status.pass {
+  background: var(--success);
+}
+
+.summary-row .status.fail {
+  background: var(--danger);
+}
+
+/* Absent status pill remains red, but subject names should stay black for both fail and absent rows */
+.status.absent {
+  background: var(--danger)
+}
+
+/* Keep subject names black regardless of fail/absent state (absent class may still be applied by JS)
+   This ensures visual consistency requested by the user. */
+tr.absent td.subject,
+td.subject.absent-text,
+tr.fail td.subject {
+  color: #0f1724;
+  font-weight: 600;
+}
+
+.error {
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px
+}
+
+@media (max-width:900px) {
+  .student-info {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .result-meta {
+    align-items: flex-start
+  }
+}
+
+@media (max-width:560px) {
+  .student-info {
+    grid-template-columns: 1fr
+  }
+
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start
+  }
+
+  .actions {
+    justify-content: flex-start
+  }
+}
+
+@media (max-width:420px) {
+
+  /* Tighter page padding on small screens */
+  body {
+    padding: 12px
+  }
+
+  /* Smaller logo and headings for narrow screens */
+  .header img {
+    width: 64px;
+    height: 64px
+  }
+
+  .brand-text .title {
+    font-size: 16px
+  }
+
+  .brand-text .subtitle,
+  .brand-text h2,
+  .brand-text h3 {
+    font-size: 12px;
+    margin: 0
+  }
+
+  /* Scale down result-card headings on small screens */
+  .result-header .college-left .college-name {
+    font-size: 16px;
+  }
+
+  .result-header .college-left .dept {
+    font-size: 12px;
+  }
+
+  /* Stack and full-width form controls for better touch usability */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px
+  }
+
+  .form-container input,
+  .form-container select,
+  .form-container button {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 12px
+  }
+
+  /* Make output use full width and reduce paddings */
+  #output {
+    width: 100%
+  }
+
+  .result-card {
+    padding: 14px
+  }
+
+  .result-header .college-left img {
+    width: 56px;
+    height: 56px
+  }
+
+  /* Tighter table cells */
+  table.result-table thead th,
+  table.result-table tbody td {
+    padding: 10px
+  }
+
+  /* Stack signatures */
+  .signatures {
+    flex-direction: column;
+    gap: 12px
+  }
+
+  .signature {
+    width: 100%;
+    align-items: flex-start
+  }
+
+  .sig-line {
+    width: 40%
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white
+  }
+
+  /* Hide header and form controls in print to keep only the result card */
+  .header,
+  .form-container,
+  button,
+  .actions .btn-print {
+    display: none
+  }
+
+  .result-card {
+    box-shadow: none;
+    border: 1px solid #eee
+  }
+
+  a[href]:after {
+    content: ""
+  }
+}
